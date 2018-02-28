@@ -4,7 +4,7 @@ import AES from 'crypto-js/aes'
 import { makeEncryptor, makeDecryptor } from './helpers'
 
 const makeSyncEncryptor = secretKey =>
-  makeEncryptor(state => AES.encrypt(state, secretKey).toString())
+  makeEncryptor(state => AES.encrypt(JSON.stringify(state), secretKey))
 
 const makeSyncDecryptor = (secretKey, onError) =>
   makeDecryptor(state => {
